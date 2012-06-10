@@ -350,13 +350,6 @@ describe "configatron" do
       configatron.math.four.should == 4
     end
 
-    it 'should handle merged keys' do
-      configatron.food.should be_nil
-      configatron.configure_from_yaml(File.join(File.dirname(__FILE__), 'merge.yml'))
-      configatron.food.should_not be_nil
-      configatron.food.list.should == [:apple, :banana, :tomato, :brocolli, :spinach]
-    end
-    
     it "should handle complex yaml" do
       configatron.complex_development.bucket.should be_nil
       configatron.configure_from_yaml(File.join(File.dirname(__FILE__), 'complex.yml'))
