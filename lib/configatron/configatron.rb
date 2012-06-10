@@ -24,6 +24,19 @@ class Configatron
     @_namespace = [:default]
     reset!
   end
+
+
+  # Helper for attaching Store to an existing module or class, rather than use the singleton
+  # Thus, Configatron.for(Foo, :bar) will setup Foo.bar as a configatron store
+  def self.for(module_or_class, key=:settings)
+    module_or_class.class_eval %(
+      def self.#{key}
+        @_#{key} ||= Configatron::Store.new
+      end
+    )
+    true
+  end
+
   
   # Forwards the method call onto the 'namespaced' Configatron::Store
   def method_missing(sym, *args, &block)
