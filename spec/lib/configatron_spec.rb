@@ -415,12 +415,12 @@ describe "configatron" do
       configatron.numbers.big.one.hundred = '100'
 
       configatron.inspect.should == %{
-configatron.letters.a = "A"
-configatron.letters.b = "B"
-configatron.numbers.big.one.hundred = "100"
-configatron.numbers.small.one = 1
-configatron.numbers.small.others = [2, 3]
-configatron.one = 1
+letters.a = "A"
+letters.b = "B"
+numbers.big.one.hundred = "100"
+numbers.small.one = 1
+numbers.small.others = [2, 3]
+one = 1
 }.strip
 
     end

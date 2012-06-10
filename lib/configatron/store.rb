@@ -60,7 +60,6 @@ class Configatron
         path << parent.instance_variable_get('@_name')
         parent = parent.instance_variable_get('@_parent')
       end
-      path << 'configatron'
       path.compact!
       path.reverse!
       f_out = []
@@ -78,7 +77,7 @@ class Configatron
             end
           end
         else
-          f_out << "#{path.join('.')}.#{k} = #{v.inspect}"
+          f_out << "#{path.join('.')}#{'.' if path.length > 0}#{k} = #{v.inspect}"
         end
       end
       f_out.compact.sort.join("\n")
@@ -276,6 +275,14 @@ class Configatron
           return cl
         end
       end
+    end
+
+    def lock_all!
+      lock!
+    end
+
+    def unlock_all!
+      unlock!
     end
 
     protected
