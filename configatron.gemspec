@@ -10,7 +10,8 @@ Gem::Specification.new do |s|
   s.email = "mark@markbates.com"
   s.extra_rdoc_files = ["LICENSE"]
 
-  ignored_files = File.read('.gitignore').split("\n").compact.reject(&:empty?) + ["Rakefile", "Gemfile", "configatron.gemspec"]
+  # Removed https://github.com/connectedbits/configatron.git for jruby proecess
+  ignored_files = ["Rakefile", "Gemfile", "configatron.gemspec"]
   test_files = Dir['spec/**/*'].reject {|f| File.directory?(f)}
   library_files = Dir['**/*'].reject{|f| File.directory?(f)}
   s.files = library_files - test_files - ignored_files
